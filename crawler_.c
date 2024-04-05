@@ -9,6 +9,11 @@ Final Project
 #include <curl/curl.h>
 #define MAXLEN 1024
 
+//function prototypes
+struct CURLResponse GetRequest(CURL *curl_handle, const char *url);
+static size_t WriteHTMLCallback(void *contents, size_t size, size_t nmemb, void *userp);
+
+
 //Struct to hold our QUEUE
 typedef struct {
     char* urls[MAXLEN];
@@ -66,16 +71,85 @@ void display(Queue* queue) {
   printf("\n");
 }
 
-int main() {
-    Queue queue;
-    initializeQueue(&queue);
+//Curl response
+struct CURLResponse
+{
+    char *html;
+    size_t size;
+};
 
-    const char* start_url = "https://example.com";
-    enqueue(&queue, start_url);
-    enqueue(&queue, start_url);
-    enqueue(&queue, start_url);
+    int main() {
+        //initialize curl
+        curl_global_init(CURL_GLOBAL_ALL);
+        CURL *curl_handle = curl_easy_init();
+    
+        //retrieve the html doc
+        struct CURLResponse response = GetRequest(curl_handle, "http://example.com");
 
-    display(&queue);
+        //print the HTML 
+        printf("%s\n", response.html);
 
-    return 0;
-}
+        //logic to handle html and look for URLS
+        /*
+        todo
+        */
+    
+        //cleanup curl instance
+        curl_easy_cleanup(curl_handle);
+        curl_global_cleanup();
+    
+        return 0;
+    }
+
+//Curl callback
+static size_t WriteHTMLCallback(void *contents, size_t size, size_t nmemb, void *userp)
+    {
+        size_t realsize = size * nmemb;
+        struct CURLResponse *mem = (struct CURLResponse *)userp;
+        char *ptr = realloc(mem->html, mem->size + realsize + 1);
+      
+        if (!ptr)
+        {
+            printf("Not enough memory available (realloc returned NULL)\n");
+            return 0;
+        }
+      
+        mem->html = ptr;
+        memcpy(&(mem->html[mem->size]), contents, realsize);
+        mem->size += realsize;
+        mem->html[mem->size] = 0;
+      
+        return realsize;
+    }
+
+//Get HTML Document
+struct CURLResponse GetRequest(CURL *curl_handle, const char *url)
+    {
+        CURLcode res;
+
+        //settup response
+        struct CURLResponse response;
+        response.html = malloc(1);
+        response.size = 0;
+      
+        //initalize URL to GET
+        curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+
+        //send data to callback
+        curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteHTMLCallback);
+        curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&response);
+
+        //set headers
+        curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36");
+
+        //preform request
+        res = curl_easy_perform(curl_handle);
+      
+        //check for error
+        if (res != CURLE_OK)
+        {
+            fprintf(stderr, "GET request failed: %s\n", curl_easy_strerror(res));
+        }
+      
+        return response;
+    }
