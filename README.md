@@ -2,6 +2,7 @@
 
 # Run command (MAC OS using clang):
  - `clang filename.c -o filename -lcurl -lxml2`
+ - (Alternatively use provided makefile)
 
 # Problem statement:
 - The internet is vast and ever-growing. Traditional single-threaded web crawlers are not
