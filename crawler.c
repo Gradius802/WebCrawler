@@ -19,10 +19,6 @@ Final Project
 // Maximum length of the URL
 #define MAX_URL_LENGTH 256
 
-//Global variables
-int numProcessed = 0;
-
-
 // Struct to hold the URL queue
 typedef struct
 {
@@ -177,16 +173,16 @@ int main()
         }
 
         // Set the initial URL to parse
-        char initialURL[MAX_URL_LENGTH];  // Variable to store the user-inputted URL
-        printf("Enter the initial URL to parse: ");  // Prompt the user to enter the initial URL
-        scanf("%s", initialURL);  // Read the user input for the initial URL
+        char initialURL[MAX_URL_LENGTH];                     // Variable to store the user-inputted URL
+        printf("Enter the initial URL to parse: ");          // Prompt the user to enter the initial URL
+        scanf("%s", initialURL);                             // Read the user input for the initial URL
 
-        pthread_mutex_lock(&queue_mutex);                   // Acquire mutex lock
+        pthread_mutex_lock(&queue_mutex);                    // Acquire mutex lock
         enqueue(q, initialURL);                              // Enqueue the initial URL provided by the user
-        pthread_mutex_unlock(&queue_mutex);                 // Release mutex lock
+        pthread_mutex_unlock(&queue_mutex);                  // Release mutex lock
 
         // Setup threads
-        pthread_t threads[NUMWORKERS];                      // Array to hold worker thread IDs
+        pthread_t threads[NUMWORKERS];                          // Array to hold worker thread IDs
         ThreadData thread_data = {q, &queue_mutex, MAX_DEPTH }; // Create thread data structure with queue, mutex, and max depth
 
         // Create worker threads
@@ -475,13 +471,20 @@ void logEvent(const char *event, const char *url, const char *status, int depth)
     }
 
     // Get the current time
+    // Declare a variable to hold the current time
     time_t currentTime;
+    // Declare a variable to hold the local time structure
     struct tm *localTime;
+    // Declare a string to store the formatted time
     char timeString[20];
 
+    // Get the current time in seconds
     currentTime = time(NULL);
+    // Convert the current time to the local time
     localTime = localtime(&currentTime);
+    // Format the local time as a string in the format "YYYY-MM-DD HH:MM:SS"
     strftime(timeString, sizeof(timeString), "%Y-%m-%d %H:%M:%S", localTime);
+
 
     // Write the log entry to the log file
     fprintf(logFile, "[%s] %s: %s\n", timeString, event, url);
