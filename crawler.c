@@ -19,10 +19,15 @@ Final Project
 // Maximum length of the URL
 #define MAX_URL_LENGTH 256
 
+// Global set to store visited URLs
+#define MAX_VISITED_URLS 10000 // Adjust the size as needed
+char *visited_urls[MAX_VISITED_URLS];
+int visited_count = 0;
+
 // Struct to hold the URL queue
 typedef struct
 {
-    char* urls[MAXLEN]; // Array to store URLs
+    char* urls[MAXLEN]; // Array to store URLs`     ``
     int front, rear;    // Front and rear pointers of the queue
 } Queue;
 
@@ -47,6 +52,9 @@ static size_t WriteHTMLCallback(void *contents, size_t size, size_t nmemb, void 
 void extractUrls(htmlDocPtr doc, Queue* q, pthread_mutex_t *mutex);
 void *worker(void *arg);
 void logEvent(const char *event, const char *url, const char *status, int depth);
+int isVisited(const char *url);
+void markVisited(const char *url);
+
 
 
 // QUEUE FUNCTIONS
@@ -94,6 +102,7 @@ void enqueue(Queue* queue, const char* url)
     queue->urls[queue->rear] = strdup(url); // Enqueue the URL by copying it into the queue array
 }
 
+
 // Dequeue a URL from the queue
 char* dequeue(Queue* queue)
 {
@@ -135,6 +144,33 @@ void display(Queue* queue)
 
 // END QUEUE FUNCTIONS
 
+/* Function to check if a URL has been visited
+
+    Preconditions:  'url' points to a valid null-terminated string containing the URL to check.
+    Postconditions: Returns 1 if the URL has been visited and is present in the 'visited_urls'
+                    array; otherwise, returns 0.
+*/
+int isVisited(const char *url) {
+    for (int i = 0; i < visited_count; i++) {  // Loop through visited URLs
+        if (strcmp(visited_urls[i], url) == 0) {  // Check if the current URL matches the provided URL
+            return 1; // URL has been visited
+        }
+    }
+    return 0; // URL has not been visited
+}
+
+/* Function to mark a URL as visited
+
+    Preconditions:  'url' points to a valid null-terminated string containing the URL to mark as visited.
+    Postconditions: If the number of visited URLs is less than 'MAX_VISITED_URLS', the provided URL is
+                    copied into the 'visited_urls' array, and 'visited_count' is incremented by 1.
+*/
+void markVisited(const char *url) {
+    if (visited_count < MAX_VISITED_URLS) {  // Check if there is space in the 'visited_urls' array
+        visited_urls[visited_count++] = strdup(url);  // Copy the provided URL into the 'visited_urls' array and increment 'visited_count'
+    }
+}
+
 // Create a mutex for the URL queue
 pthread_mutex_t queue_mutex = PTHREAD_MUTEX_INITIALIZER; // Initialize mutex for queue synchronization
 
@@ -162,10 +198,14 @@ int main()
     int MAX_DEPTH = 0;                                  // Variable to store maximum depth
 
     //loop until user enter -1 for depth
-    while(MAX_DEPTH != -1)
+    while(MAX_DEPTH >= 0)
     {
         printf("Enter a depth for searching: (Enter -1 to exit)\n");          // Prompt user to enter depth for searching
-        scanf("%d", &MAX_DEPTH);                                              // Read user input for maximum depth
+        if (scanf("%d", &MAX_DEPTH) != 1) {                                   // Read user input for maximum depth
+            printf("Invalid input. Please enter a number.\n");                // If input is not a number
+            while (getchar() != '\n');                                        // Clear the input buffer
+            continue;                                                         // Restart the loop
+        }                                                                     // Read user input for maximum depth
 
         if(MAX_DEPTH == -1)
         {
@@ -273,6 +313,13 @@ struct CURLResponse GetRequest(CURL *curl_handle, const char *url)
     response.html = malloc(1);      // Allocate memory for HTML content
     response.size = 0;              // Initialize size to 0
 
+    int retry = 3;  // Number of retries
+
+    // Set timeout options
+    curl_easy_setopt(curl_handle, CURLOPT_TIMEOUT, 30L);        // Maximum time allowed for the entire request (in seconds)
+    curl_easy_setopt(curl_handle, CURLOPT_CONNECTTIMEOUT, 10L); // Maximum time allowed for connection establishment (in seconds)
+
+    do {
     // Initialize URL to GET
     curl_easy_setopt(curl_handle, CURLOPT_URL, url);
 
@@ -286,10 +333,21 @@ struct CURLResponse GetRequest(CURL *curl_handle, const char *url)
     // Perform request
     res = curl_easy_perform(curl_handle);   // Perform the curl request
 
-    // Check for error
-    if (res != CURLE_OK)   // If curl operation fails
-    {
-        fprintf(stderr, "GET request failed: %s\n", curl_easy_strerror(res));   // Print error message
+    if (res != CURLE_OK) {
+            fprintf(stderr, "GET request failed: %s\n", curl_easy_strerror(res));   // Print error message
+            retry--;
+            if (retry > 0) {
+                fprintf(stderr, "Retrying GET request for URL: %s\n", url);
+                usleep(1000000); // Sleep for 1 second before retrying
+            }
+        }
+    } while (res != CURLE_OK && retry > 0);
+
+    if (res != CURLE_OK) {
+        // Clean up and return empty response
+        free(response.html);
+        response.html = NULL;
+        response.size = 0;
     }
 
     return response;   // Return the response structure
@@ -383,9 +441,9 @@ void *worker(void *arg)
     {
         char *url;   // Variable to store URL
 
-        pthread_mutex_lock(mutex);   // Acquire mutex lock
-        url = dequeue(queue);   // Dequeue a URL
-        pthread_mutex_unlock(mutex);   // Release mutex lock
+        pthread_mutex_lock(mutex);      // Acquire mutex lock
+        url = dequeue(queue);           // Dequeue a URL
+        pthread_mutex_unlock(mutex);    // Release mutex lock
 
         if (url == NULL)    // Check if queue was empty
         {
@@ -393,7 +451,13 @@ void *worker(void *arg)
         }
         if(curdepth >= MAX_DEPTH)   // Check if current depth exceeds maximum depth
         {
+            free(url);  // Free the URL string
             continue;   // Skip processing the URL if depth limit is reached
+        }
+
+        if (isVisited(url)) { // Check if URL has been visited
+            free(url);        // Free the URL string
+            continue;         // Skip processing if URL has been visited
         }
 
         // Log the start of processing for the URL
@@ -420,6 +484,9 @@ void *worker(void *arg)
             // Log failure to retrieve the HTML content
             logEvent("Failed to retrieve HTML content", url, NULL, curdepth);
         }
+
+        // Mark URL as visited
+        markVisited(url);
 
         //Finished processing URLs, log to file.
         logEvent("Finished processing URL", url, NULL, curdepth);

@@ -1,50 +1,284 @@
-[19:00:00] Program initialization: 
-[00:36:00] Processing URL: example.com
+[2024-04-25 12:43:20] Program initialization: 
+[2024-04-25 12:43:29] Processing URL: example.com
 	Depth: 0
-[18:38:56] HTML content retrieved: example.com
+[2024-04-25 12:43:29] HTML content retrieved: example.com
 	Depth: 0
-[13:14:08] Finished processing URL: example.com
+[2024-04-25 12:43:29] Finished processing URL: example.com
 	Depth: 0
-[00:36:00] Processing URL: https://www.iana.org/domains/example
+[2024-04-25 12:43:29] Processing URL: https://www.iana.org/domains/example
 	Depth: 1
-[00:20:00] HTML content retrieved: https://www.iana.org/domains/example
+[2024-04-25 12:43:29] HTML content retrieved: https://www.iana.org/domains/example
 	Depth: 1
-[13:14:08] Finished processing URL: https://www.iana.org/domains/example
+[2024-04-25 12:43:29] Finished processing URL: https://www.iana.org/domains/example
 	Depth: 1
-[00:36:00] Processing URL: http://www.iana.org/help/example-domains
+[2024-04-25 12:43:29] Processing URL: http://www.iana.org/help/example-domains
 	Depth: 2
-[00:20:00] HTML content retrieved: http://www.iana.org/help/example-domains
+[2024-04-25 12:43:29] HTML content retrieved: http://www.iana.org/help/example-domains
 	Depth: 2
-[13:14:08] Finished processing URL: http://www.iana.org/help/example-domains
+[2024-04-25 12:43:29] Finished processing URL: http://www.iana.org/help/example-domains
 	Depth: 2
-[00:36:00] Processing URL: http://pti.icann.org
+[2024-04-25 12:43:29] Processing URL: http://pti.icann.org
 	Depth: 3
-[13:14:08] Finished processing URL: http://pti.icann.org
+[2024-04-25 12:43:31] Failed to retrieve HTML content: http://pti.icann.org
 	Depth: 3
-[00:36:00] Processing URL: http://www.icann.org/
+[2024-04-25 12:43:31] Finished processing URL: http://pti.icann.org
+	Depth: 3
+[2024-04-25 12:43:31] Processing URL: http://www.icann.org/
 	Depth: 4
-[13:14:08] Finished processing URL: http://www.icann.org/
+[2024-04-25 12:43:31] Finished processing URL: http://www.icann.org/
 	Depth: 4
-[00:36:00] Processing URL: https://www.icann.org/privacy/policy
+[2024-04-25 12:43:31] Processing URL: https://www.icann.org/privacy/policy
 	Depth: 5
-[11:11:28] HTML content retrieved: https://www.icann.org/privacy/policy
+[2024-04-25 12:43:34] HTML content retrieved: https://www.icann.org/privacy/policy
 	Depth: 5
-[13:14:08] Finished processing URL: https://www.icann.org/privacy/policy
+[2024-04-25 12:43:34] Finished processing URL: https://www.icann.org/privacy/policy
 	Depth: 5
-[00:36:00] Processing URL: https://www.icann.org/privacy/tos
+[2024-04-25 12:43:34] Processing URL: https://www.icann.org/privacy/tos
 	Depth: 6
-[12:26:56] HTML content retrieved: https://www.icann.org/privacy/tos
+[2024-04-25 12:43:34] HTML content retrieved: https://www.icann.org/privacy/tos
 	Depth: 6
-[13:14:08] Finished processing URL: https://www.icann.org/privacy/tos
+[2024-04-25 12:43:34] Finished processing URL: https://www.icann.org/privacy/tos
 	Depth: 6
-[00:36:00] Processing URL: https://account.icann.org/authorize?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+[2024-04-25 12:43:34] Processing URL: https://account.icann.org/authorize?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
 	Depth: 7
-[13:14:08] Finished processing URL: https://account.icann.org/authorize?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+[2024-04-25 12:43:34] Finished processing URL: https://account.icann.org/authorize?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
 	Depth: 7
-[00:36:00] Processing URL: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+[2024-04-25 12:43:34] Processing URL: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
 	Depth: 8
-[09:56:48] HTML content retrieved: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+[2024-04-25 12:43:34] HTML content retrieved: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
 	Depth: 8
-[13:14:08] Finished processing URL: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+[2024-04-25 12:43:34] Finished processing URL: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
 	Depth: 8
-[21:57:07] Program Terminated: 
+[2024-04-25 12:43:34] Processing URL: https://www.icann.org/history
+	Depth: 9
+[2024-04-25 12:43:35] HTML content retrieved: https://www.icann.org/history
+	Depth: 9
+[2024-04-25 12:43:35] Finished processing URL: https://www.icann.org/history
+	Depth: 9
+[2024-04-25 12:43:35] Processing URL: https://info.icann.org/LP---Regional-Newsletter.html
+	Depth: 10
+[2024-04-25 12:43:35] HTML content retrieved: https://info.icann.org/LP---Regional-Newsletter.html
+	Depth: 10
+[2024-04-25 12:43:35] Finished processing URL: https://info.icann.org/LP---Regional-Newsletter.html
+	Depth: 10
+[2024-04-25 12:43:35] Processing URL: https://subscribe.icann.org/
+	Depth: 11
+[2024-04-25 12:43:36] HTML content retrieved: https://subscribe.icann.org/
+	Depth: 11
+[2024-04-25 12:43:36] Finished processing URL: https://subscribe.icann.org/
+	Depth: 11
+[2024-04-25 12:43:36] Processing URL: https://www.icann.org/resources/pages/regional-reports-2021-2021-08-24-en
+	Depth: 12
+[2024-04-25 12:43:37] HTML content retrieved: https://www.icann.org/resources/pages/regional-reports-2021-2021-08-24-en
+	Depth: 12
+[2024-04-25 12:43:37] Finished processing URL: https://www.icann.org/resources/pages/regional-reports-2021-2021-08-24-en
+	Depth: 12
+[2024-04-25 12:43:37] Processing URL: https://www.icann.org/en/public-comment?sort-param=upcoming-date&sort-direction=asc&upcoming-sort-param=upcoming-date&upcoming-sort-direction=desc&open-sort-param=open-closed-date&open-sort-direction=asc&pending-sort-param=pending-report-due-date&pending-sort-direction=desc
+	Depth: 13
+[2024-04-25 12:43:38] HTML content retrieved: https://www.icann.org/en/public-comment?sort-param=upcoming-date&sort-direction=asc&upcoming-sort-param=upcoming-date&upcoming-sort-direction=desc&open-sort-param=open-closed-date&open-sort-direction=asc&pending-sort-param=pending-report-due-date&pending-sort-direction=desc
+	Depth: 13
+[2024-04-25 12:43:38] Finished processing URL: https://www.icann.org/en/public-comment?sort-param=upcoming-date&sort-direction=asc&upcoming-sort-param=upcoming-date&upcoming-sort-direction=desc&open-sort-param=open-closed-date&open-sort-direction=asc&pending-sort-param=pending-report-due-date&pending-sort-direction=desc
+	Depth: 13
+[2024-04-25 12:43:38] Processing URL: https://www.icann.org/en/public-comment/upcoming-proceedings?sort-param=upcoming-date&sort-direction=asc&page=1
+	Depth: 14
+[2024-04-25 12:43:39] HTML content retrieved: https://www.icann.org/en/public-comment/upcoming-proceedings?sort-param=upcoming-date&sort-direction=asc&page=1
+	Depth: 14
+[2024-04-25 12:43:39] Finished processing URL: https://www.icann.org/en/public-comment/upcoming-proceedings?sort-param=upcoming-date&sort-direction=asc&page=1
+	Depth: 14
+[2024-04-25 12:43:39] Processing URL: https://www.icann.org/en/public-comment/closed-proceedings?page=1&sort-param=closed-date&sort-direction=desc
+	Depth: 15
+[2024-04-25 12:43:39] HTML content retrieved: https://www.icann.org/en/public-comment/closed-proceedings?page=1&sort-param=closed-date&sort-direction=desc
+	Depth: 15
+[2024-04-25 12:43:39] Finished processing URL: https://www.icann.org/en/public-comment/closed-proceedings?page=1&sort-param=closed-date&sort-direction=desc
+	Depth: 15
+[2024-04-25 12:43:39] Processing URL: https://www.icann.org/en/public-comment/about
+	Depth: 16
+[2024-04-25 12:43:40] HTML content retrieved: https://www.icann.org/en/public-comment/about
+	Depth: 16
+[2024-04-25 12:43:40] Finished processing URL: https://www.icann.org/en/public-comment/about
+	Depth: 16
+[2024-04-25 12:43:40] Processing URL: https://www.icann.org/en/public-comment/other-public-consultations
+	Depth: 17
+[2024-04-25 12:43:40] HTML content retrieved: https://www.icann.org/en/public-comment/other-public-consultations
+	Depth: 17
+[2024-04-25 12:43:40] Finished processing URL: https://www.icann.org/en/public-comment/other-public-consultations
+	Depth: 17
+[2024-04-25 12:43:40] Processing URL: https://icann.org/en/board-activities-and-meetings
+	Depth: 18
+[2024-04-25 12:43:40] HTML content retrieved: https://icann.org/en/board-activities-and-meetings
+	Depth: 18
+[2024-04-25 12:43:40] Finished processing URL: https://icann.org/en/board-activities-and-meetings
+	Depth: 18
+[2024-04-25 12:43:40] Processing URL: https://www.icann.org/complaints-office
+	Depth: 19
+[2024-04-25 12:43:41] HTML content retrieved: https://www.icann.org/complaints-office
+	Depth: 19
+[2024-04-25 12:43:41] Finished processing URL: https://www.icann.org/complaints-office
+	Depth: 19
+[2024-04-25 12:43:41] Processing URL: https://www.icann.org/resources/pages/domain-name-registrants-2017-06-20-en
+	Depth: 20
+[2024-04-25 12:43:41] Finished processing URL: https://www.icann.org/resources/pages/domain-name-registrants-2017-06-20-en
+	Depth: 20
+[2024-04-25 12:43:41] Processing URL: https://www.iana.org/
+	Depth: 21
+[2024-04-25 12:43:41] HTML content retrieved: https://www.iana.org/
+	Depth: 21
+[2024-04-25 12:43:41] Finished processing URL: https://www.iana.org/
+	Depth: 21
+[2024-04-25 12:43:41] Processing URL: https://www.icann.org/en/icann-acronyms-and-terms
+	Depth: 22
+[2024-04-25 12:43:43] HTML content retrieved: https://www.icann.org/en/icann-acronyms-and-terms
+	Depth: 22
+[2024-04-25 12:43:43] Finished processing URL: https://www.icann.org/en/icann-acronyms-and-terms
+	Depth: 22
+[2024-04-25 12:43:43] Processing URL: https://newgtldprogram.icann.org/
+	Depth: 23
+[2024-04-25 12:43:43] HTML content retrieved: https://newgtldprogram.icann.org/
+	Depth: 23
+[2024-04-25 12:43:43] Finished processing URL: https://newgtldprogram.icann.org/
+	Depth: 23
+[2024-04-25 12:43:43] Processing URL: https://pti.icann.org/
+	Depth: 24
+[2024-04-25 12:43:44] HTML content retrieved: https://pti.icann.org/
+	Depth: 24
+[2024-04-25 12:43:44] Finished processing URL: https://pti.icann.org/
+	Depth: 24
+[2024-04-25 12:43:44] Processing URL: https://opendata.icann.org/
+	Depth: 25
+[2024-04-25 12:43:44] Finished processing URL: https://opendata.icann.org/
+	Depth: 25
+[2024-04-25 12:43:44] Processing URL: https://www.icann.org/compliance/complaint
+	Depth: 26
+[2024-04-25 12:43:45] HTML content retrieved: https://www.icann.org/compliance/complaint
+	Depth: 26
+[2024-04-25 12:43:45] Finished processing URL: https://www.icann.org/compliance/complaint
+	Depth: 26
+[2024-04-25 12:43:45] Processing URL: https://www.icann.org/technology
+	Depth: 27
+[2024-04-25 12:43:45] HTML content retrieved: https://www.icann.org/technology
+	Depth: 27
+[2024-04-25 12:43:45] Finished processing URL: https://www.icann.org/technology
+	Depth: 27
+[2024-04-25 12:43:45] Processing URL: https://www.icann.org/careers
+	Depth: 28
+[2024-04-25 12:43:45] Finished processing URL: https://www.icann.org/careers
+	Depth: 28
+[2024-04-25 12:43:45] Processing URL: http://www.iana.org/dnssec
+	Depth: 29
+[2024-04-25 12:43:45] Finished processing URL: http://www.iana.org/dnssec
+	Depth: 29
+[2024-04-25 12:43:45] Processing URL: http://stats.research.icann.org/dns/tld_report/
+	Depth: 30
+[2024-04-25 12:43:45] HTML content retrieved: http://stats.research.icann.org/dns/tld_report/
+	Depth: 30
+[2024-04-25 12:43:45] Finished processing URL: http://stats.research.icann.org/dns/tld_report/
+	Depth: 30
+[2024-04-25 12:43:45] Processing URL: https://www.iana.org/dnssec/ceremonies
+	Depth: 31
+[2024-04-25 12:43:46] HTML content retrieved: https://www.iana.org/dnssec/ceremonies
+	Depth: 31
+[2024-04-25 12:43:46] Finished processing URL: https://www.iana.org/dnssec/ceremonies
+	Depth: 31
+[2024-04-25 12:43:46] Processing URL: http://gnso.icann.org/en/group-activities/inactive/2012/improvements
+	Depth: 32
+[2024-04-25 12:43:46] Finished processing URL: http://gnso.icann.org/en/group-activities/inactive/2012/improvements
+	Depth: 32
+[2024-04-25 12:43:46] Processing URL: http://mm.icann.org/pipermail/ecadmin/
+	Depth: 33
+[2024-04-25 12:43:46] HTML content retrieved: http://mm.icann.org/pipermail/ecadmin/
+	Depth: 33
+[2024-04-25 12:43:46] Finished processing URL: http://mm.icann.org/pipermail/ecadmin/
+	Depth: 33
+[2024-04-25 12:43:46] Processing URL: http://aoctracking.icann.org/
+	Depth: 34
+[2024-04-25 12:43:46] HTML content retrieved: http://aoctracking.icann.org/
+	Depth: 34
+[2024-04-25 12:43:46] Finished processing URL: http://aoctracking.icann.org/
+	Depth: 34
+[2024-04-25 12:43:46] Processing URL: https://gac.icann.org
+	Depth: 35
+[2024-04-25 12:43:46] HTML content retrieved: https://gac.icann.org
+	Depth: 35
+[2024-04-25 12:43:47] Finished processing URL: https://gac.icann.org
+	Depth: 35
+[2024-04-25 12:43:47] Processing URL: https://atlarge.icann.org/
+	Depth: 36
+[2024-04-25 12:43:47] HTML content retrieved: https://atlarge.icann.org/
+	Depth: 36
+[2024-04-25 12:43:47] Finished processing URL: https://atlarge.icann.org/
+	Depth: 36
+[2024-04-25 12:43:47] Processing URL: https://aso.icann.org/
+	Depth: 37
+[2024-04-25 12:43:48] HTML content retrieved: https://aso.icann.org/
+	Depth: 37
+[2024-04-25 12:43:48] Finished processing URL: https://aso.icann.org/
+	Depth: 37
+[2024-04-25 12:43:48] Processing URL: https://ccnso.icann.org/
+	Depth: 38
+[2024-04-25 12:43:48] HTML content retrieved: https://ccnso.icann.org/
+	Depth: 38
+[2024-04-25 12:43:48] Finished processing URL: https://ccnso.icann.org/
+	Depth: 38
+[2024-04-25 12:43:48] Processing URL: https://gnso.icann.org/en/
+	Depth: 39
+[2024-04-25 12:43:49] HTML content retrieved: https://gnso.icann.org/en/
+	Depth: 39
+[2024-04-25 12:43:49] Finished processing URL: https://gnso.icann.org/en/
+	Depth: 39
+[2024-04-25 12:43:49] Processing URL: https://www.icann.org/nomcom
+	Depth: 40
+[2024-04-25 12:43:49] Finished processing URL: https://www.icann.org/nomcom
+	Depth: 40
+[2024-04-25 12:43:49] Processing URL: https://www.icann.org/csc
+	Depth: 41
+[2024-04-25 12:43:49] HTML content retrieved: https://www.icann.org/csc
+	Depth: 41
+[2024-04-25 12:43:49] Finished processing URL: https://www.icann.org/csc
+	Depth: 41
+[2024-04-25 12:43:49] Processing URL: https://www.icann.org/rzerc
+	Depth: 42
+[2024-04-25 12:43:50] HTML content retrieved: https://www.icann.org/rzerc
+	Depth: 42
+[2024-04-25 12:43:50] Finished processing URL: https://www.icann.org/rzerc
+	Depth: 42
+[2024-04-25 12:43:50] Processing URL: https://features.icann.org/compliance
+	Depth: 43
+[2024-04-25 12:43:50] HTML content retrieved: https://features.icann.org/compliance
+	Depth: 43
+[2024-04-25 12:43:50] Finished processing URL: https://features.icann.org/compliance
+	Depth: 43
+[2024-04-25 12:43:50] Processing URL: https://www.icann.org/registrar-library
+	Depth: 44
+[2024-04-25 12:43:50] HTML content retrieved: https://www.icann.org/registrar-library
+	Depth: 44
+[2024-04-25 12:43:50] Finished processing URL: https://www.icann.org/registrar-library
+	Depth: 44
+[2024-04-25 12:43:50] Processing URL: https://www.icann.org/en/system/files/files/registrar-billing-faq-21dec21-en.pdf
+	Depth: 45
+[2024-04-25 12:43:52] HTML content retrieved: https://www.icann.org/en/system/files/files/registrar-billing-faq-21dec21-en.pdf
+	Depth: 45
+[2024-04-25 12:43:52] Finished processing URL: https://www.icann.org/en/system/files/files/registrar-billing-faq-21dec21-en.pdf
+	Depth: 45
+[2024-04-25 12:43:52] Processing URL: http://www.icann.org/registrar-reports/accreditation-qualified-list.html
+	Depth: 46
+[2024-04-25 12:43:52] Finished processing URL: http://www.icann.org/registrar-reports/accreditation-qualified-list.html
+	Depth: 46
+[2024-04-25 12:43:52] Processing URL: https://meetings.icann.org/en/calendar 
+	Depth: 47
+[2024-04-25 12:43:54] Failed to retrieve HTML content: https://meetings.icann.org/en/calendar 
+	Depth: 47
+[2024-04-25 12:43:54] Finished processing URL: https://meetings.icann.org/en/calendar 
+	Depth: 47
+[2024-04-25 12:43:54] Processing URL: https://newgtlds.icann.org/en/
+	Depth: 48
+[2024-04-25 12:43:55] HTML content retrieved: https://newgtlds.icann.org/en/
+	Depth: 48
+[2024-04-25 12:43:55] Finished processing URL: https://newgtlds.icann.org/en/
+	Depth: 48
+[2024-04-25 12:43:55] Processing URL: https://newgtlds.icann.org/en/announcements-and-media/case-studies 
+	Depth: 49
+[2024-04-25 12:43:57] Failed to retrieve HTML content: https://newgtlds.icann.org/en/announcements-and-media/case-studies 
+	Depth: 49
+[2024-04-25 12:43:57] Finished processing URL: https://newgtlds.icann.org/en/announcements-and-media/case-studies 
+	Depth: 49
+[2024-04-25 12:44:13] Program Terminated: 
