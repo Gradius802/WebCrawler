@@ -7,3 +7,13 @@
 	<pthread.h>
 	<libxml/HTMLparser.h>
 
+1713994838 MLparser.h>
+
+1714042043 source:/mnt/c/Users/ja606/GitHub/WebCrawler/crawler.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<curl/curl.h>
+	<pthread.h>
+	<libxml/HTMLparser.h>
+

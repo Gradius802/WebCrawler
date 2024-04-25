@@ -19,6 +19,10 @@ Final Project
 // Maximum length of the URL
 #define MAX_URL_LENGTH 256
 
+//Global variables
+int numProcessed = 0;
+
+
 // Struct to hold the URL queue
 typedef struct
 {
@@ -46,6 +50,8 @@ struct CURLResponse GetRequest(CURL *curl_handle, const char *url);
 static size_t WriteHTMLCallback(void *contents, size_t size, size_t nmemb, void *userp);
 void extractUrls(htmlDocPtr doc, Queue* q, pthread_mutex_t *mutex);
 void *worker(void *arg);
+void logEvent(const char *event, const char *url, const char *status, int depth);
+
 
 // QUEUE FUNCTIONS
 
@@ -146,6 +152,9 @@ int main()
     curl_global_init(CURL_GLOBAL_ALL); // Initialize CURL library
     curl_handle = curl_easy_init();    // Initialize CURL handle
 
+    //Initial entry in to the log file,
+    logEvent("Program initialization", "", NULL, -2);
+
     // Setup URL queue
     Queue *q = malloc(sizeof(Queue));                   // Allocate memory for the URL queue
     if (q == NULL)                                      // If memory allocation fails
@@ -201,6 +210,9 @@ int main()
     // Cleanup CURL instance
     curl_easy_cleanup(curl_handle);                     // Cleanup CURL handle
     curl_global_cleanup();                              // Cleanup CURL library
+
+    //add log for end of program
+    logEvent("Program Terminated", "", NULL, -1);
 
     return 0; // Return from main with success code
 }
@@ -389,6 +401,9 @@ void *worker(void *arg)
             continue;   // Skip processing the URL if depth limit is reached
         }
 
+        // Log the start of processing for the URL
+        logEvent("Processing URL", url, NULL, curdepth);
+
         struct CURLResponse response = GetRequest(curl_handle, url);   // Get HTML response for the URL
 
         // Check for response
@@ -397,13 +412,93 @@ void *worker(void *arg)
             htmlDocPtr doc = htmlReadMemory(response.html, (unsigned long)response.size, NULL, NULL, HTML_PARSE_NOERROR);   // Parse HTML document
             if (doc)   // If document parsing is successful
             {
+                // Log the successful retrieval of HTML content
+                logEvent("HTML content retrieved", url, NULL, curdepth);
+
                 extractUrls(doc, queue, mutex);   // Extract URLs from the document
                 xmlFreeDoc(doc);   // Free parsed HTML document
             }
             free(response.html);   // Free HTML content memory
         }
+        else
+        {
+            // Log failure to retrieve the HTML content
+            logEvent("Failed to retrieve HTML content", url, NULL, curdepth);
+        }
+
+        //Finished processing URLs, log to file.
+        logEvent("Finished processing URL", url, NULL, curdepth);
+
         free(url); // Free the URL string
         curdepth++;   // Increment current depth
     }
     return NULL;   // Return from worker thread
+}
+
+/*
+    logEvent
+
+    Description: this function logs information to a log file.
+    If the log file does not exist yet, it is created. Subsequent calls append
+    new log entries to the existing log file.
+
+    Preconditions/parameters.
+    - event: The event or action being logged.
+    - url: The URL associated with the event.
+    - status: The status of the event (optional).
+    - depth: The depth of the event in the URL traversal.
+
+    Postconditions:
+    - If the log file does not exist yet, it is created and the log entry is written.
+    - If the log file already exists, the log entry is appended to the existing file.
+*/
+void logEvent(const char *event, const char *url, const char *status, int depth)
+{
+    // Open the log file in read mode to check if it exists
+    FILE *logFile = fopen("crawler.log", "r");
+    //if depth == -2, we are on the initial run of the program
+    if (logFile == NULL || depth == -2)
+    {
+        // If the log file does not exist yet, create it in write mode
+        logFile = fopen("crawler.log", "w");
+    }
+    else
+    {
+        // If the log file already exists, close it and open it in append mode
+        fclose(logFile);
+        logFile = fopen("crawler.log", "a");
+    }
+
+    if (logFile == NULL)
+    {
+        fprintf(stderr, "Error opening log file\n");
+        return;
+    }
+
+    // Get the current time
+    time_t currentTime;
+    struct tm *localTime;
+    char timeString[20];
+
+    currentTime = time(NULL);
+    localTime = localtime(&currentTime);
+    strftime(timeString, sizeof(timeString), "%Y-%m-%d %H:%M:%S", localTime);
+
+    // Write the log entry to the log file
+    fprintf(logFile, "[%s] %s: %s\n", timeString, event, url);
+
+    // If status is provided, log it as well
+    if (status != NULL)
+    {
+        fprintf(logFile, "\tStatus: %s\n", status);
+    }
+
+    // If depth is provided, log it as well
+    if (depth >= 0)
+    {
+        fprintf(logFile, "\tDepth: %d\n", depth);
+    }
+
+    // Close the log file
+    fclose(logFile);
 }
