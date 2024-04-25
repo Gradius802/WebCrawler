@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1713994838 source:/home/james/WebCrawler/WebCrawler/crawler.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<curl/curl.h>
+	<pthread.h>
+	<libxml/HTMLparser.h>
+
