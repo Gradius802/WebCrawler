@@ -1,6 +1,76 @@
-[2024-04-25 06:43:28] Program initialization: 
-[2024-04-25 06:43:35] Processing URL: wikipedia.org
+[2024-04-25 06:56:51] Program initialization: 
+[2024-04-25 06:56:58] Processing URL: example.com
 	Depth: 0
-[2024-04-25 06:43:35] Finished processing URL: wikipedia.org
+[2024-04-25 06:56:58] HTML content retrieved: example.com
 	Depth: 0
-[2024-04-25 06:43:35] Program Terminated: 
+[2024-04-25 06:56:58] Finished processing URL: example.com
+	Depth: 0
+[2024-04-25 06:56:58] Processing URL: https://www.iana.org/domains/example
+	Depth: 1
+[2024-04-25 06:56:58] HTML content retrieved: https://www.iana.org/domains/example
+	Depth: 1
+[2024-04-25 06:56:58] Finished processing URL: https://www.iana.org/domains/example
+	Depth: 1
+[2024-04-25 06:56:58] Processing URL: http://www.iana.org/help/example-domains
+	Depth: 2
+[2024-04-25 06:56:59] HTML content retrieved: http://www.iana.org/help/example-domains
+	Depth: 2
+[2024-04-25 06:56:59] Finished processing URL: http://www.iana.org/help/example-domains
+	Depth: 2
+[2024-04-25 06:56:59] Processing URL: http://pti.icann.org
+	Depth: 3
+[2024-04-25 06:56:59] Finished processing URL: http://pti.icann.org
+	Depth: 3
+[2024-04-25 06:56:59] Processing URL: http://www.icann.org/
+	Depth: 4
+[2024-04-25 06:56:59] Finished processing URL: http://www.icann.org/
+	Depth: 4
+[2024-04-25 06:56:59] Processing URL: https://www.icann.org/privacy/policy
+	Depth: 5
+[2024-04-25 06:57:01] HTML content retrieved: https://www.icann.org/privacy/policy
+	Depth: 5
+[2024-04-25 06:57:01] Finished processing URL: https://www.icann.org/privacy/policy
+	Depth: 5
+[2024-04-25 06:57:01] Processing URL: https://www.icann.org/privacy/tos
+	Depth: 6
+[2024-04-25 06:57:04] HTML content retrieved: https://www.icann.org/privacy/tos
+	Depth: 6
+[2024-04-25 06:57:04] Finished processing URL: https://www.icann.org/privacy/tos
+	Depth: 6
+[2024-04-25 06:57:04] Processing URL: https://account.icann.org/authorize?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+	Depth: 7
+[2024-04-25 06:57:04] Finished processing URL: https://account.icann.org/authorize?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+	Depth: 7
+[2024-04-25 06:57:04] Processing URL: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+	Depth: 8
+[2024-04-25 06:57:04] HTML content retrieved: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+	Depth: 8
+[2024-04-25 06:57:04] Finished processing URL: https://account.icann.org/registeraccount?redirect_uri=https://www.icann.org/oauth&client_id=0oa9o9k9rp8VUcyJL2p7&nonce=6f5398ba-8a62-4370-99a8-e00d981b692d&state=https://www.icann.org/
+	Depth: 8
+[2024-04-25 06:57:04] Processing URL: https://www.icann.org/history
+	Depth: 9
+[2024-04-25 06:57:04] HTML content retrieved: https://www.icann.org/history
+	Depth: 9
+[2024-04-25 06:57:04] Finished processing URL: https://www.icann.org/history
+	Depth: 9
+[2024-04-25 06:57:13] Processing URL: wikipedia.org
+	Depth: 0
+[2024-04-25 06:57:13] Finished processing URL: wikipedia.org
+	Depth: 0
+[2024-04-25 06:57:20] Processing URL: google.com
+	Depth: 0
+[2024-04-25 06:57:20] HTML content retrieved: google.com
+	Depth: 0
+[2024-04-25 06:57:20] Finished processing URL: google.com
+	Depth: 0
+[2024-04-25 06:57:20] Processing URL: http://www.google.com/
+	Depth: 1
+[2024-04-25 06:57:20] HTML content retrieved: http://www.google.com/
+	Depth: 1
+[2024-04-25 06:57:20] Finished processing URL: http://www.google.com/
+	Depth: 1
+[2024-04-25 06:58:01] Processing URL: youtube.com
+	Depth: 0
+[2024-04-25 06:58:01] Finished processing URL: youtube.com
+	Depth: 0
+[2024-04-25 06:58:05] Program Terminated: 

@@ -165,46 +165,45 @@ int main()
 
     int MAX_DEPTH = 0;                                  // Variable to store maximum depth
 
-    printf("Enter a depth for searching: \n");          // Prompt user to enter depth for searching
-    scanf("%d", &MAX_DEPTH);                            // Read user input for maximum depth
-
-    // Set the initial URL to parse
-    char initialURL[MAX_URL_LENGTH];  // Variable to store the user-inputted URL
-    printf("Enter the initial URL to parse: ");  // Prompt the user to enter the initial URL
-    scanf("%s", initialURL);  // Read the user input for the initial URL
-
-    pthread_mutex_lock(&queue_mutex);                   // Acquire mutex lock
-    enqueue(q, initialURL);                              // Enqueue the initial URL provided by the user
-    pthread_mutex_unlock(&queue_mutex);                 // Release mutex lock
-
-    // Setup threads
-    pthread_t threads[NUMWORKERS];                      // Array to hold worker thread IDs
-    ThreadData thread_data = {q, &queue_mutex, MAX_DEPTH }; // Create thread data structure with queue, mutex, and max depth
-
-    // Create worker threads
-    for (int i = 0; i < NUMWORKERS; i++)                // Iterate over number of worker threads
+    //loop until user enter -1 for depth
+    while(MAX_DEPTH != -1)
     {
-        if (pthread_create(&threads[i], NULL, worker, &thread_data) != 0) // Create a worker thread
+        printf("Enter a depth for searching: (Enter -1 to exit)\n");          // Prompt user to enter depth for searching
+        scanf("%d", &MAX_DEPTH);                                              // Read user input for maximum depth
+
+        if(MAX_DEPTH == -1)
         {
-            perror("Error creating thread");            // Print error message if thread creation fails
-            return 0;                                   // Return from main with error code
+            break; //exit the loop.
         }
-    }
 
-    //
-    /*// Set the initial URL to parse (TO BE CHANGED -> URL GIVEN BY USER)
-    pthread_mutex_lock(&queue_mutex);                   // Acquire mutex lock
-    enqueue(q, "https://www.example.com");              // Enqueue the initial URL
-    pthread_mutex_unlock(&queue_mutex);                 // Release mutex lock
-    */
+        // Set the initial URL to parse
+        char initialURL[MAX_URL_LENGTH];  // Variable to store the user-inputted URL
+        printf("Enter the initial URL to parse: ");  // Prompt the user to enter the initial URL
+        scanf("%s", initialURL);  // Read the user input for the initial URL
 
+        pthread_mutex_lock(&queue_mutex);                   // Acquire mutex lock
+        enqueue(q, initialURL);                              // Enqueue the initial URL provided by the user
+        pthread_mutex_unlock(&queue_mutex);                 // Release mutex lock
 
+        // Setup threads
+        pthread_t threads[NUMWORKERS];                      // Array to hold worker thread IDs
+        ThreadData thread_data = {q, &queue_mutex, MAX_DEPTH }; // Create thread data structure with queue, mutex, and max depth
 
+        // Create worker threads
+        for (int i = 0; i < NUMWORKERS; i++)                // Iterate over number of worker threads
+        {
+            if (pthread_create(&threads[i], NULL, worker, &thread_data) != 0) // Create a worker thread
+            {
+                perror("Error creating thread");            // Print error message if thread creation fails
+                return 0;                                   // Return from main with error code
+            }
+        }
 
-    // Wait for worker threads to finish
-    for (int i = 0; i < NUMWORKERS; i++)                // Iterate over worker threads
-    {
-        pthread_join(threads[i], NULL);                 // Wait for a worker thread to finish
+        // Wait for worker threads to finish
+        for (int i = 0; i < NUMWORKERS; i++)                // Iterate over worker threads
+        {
+            pthread_join(threads[i], NULL);                 // Wait for a worker thread to finish
+        }
     }
 
     // Cleanup CURL instance
